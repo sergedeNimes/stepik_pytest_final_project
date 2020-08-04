@@ -23,9 +23,9 @@ class ProductPage(BasePage):
     def should_be_product_name_in_basket_message(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
         product_message = self.browser.find_element(*ProductPageLocators.PRODUCT_MESSAGE).text
-        assert product_name in product_message, "Product name in basket message is not presented"
+        assert product_name == product_message, "Product name in basket message is not presented"
 
     def should_be_product_price_in_cost_basket_message(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         cost_message = self.browser.find_element(*ProductPageLocators.COST_MESSAGE).text
-        assert product_price in cost_message, "Product price in cost basket message is not presented"
+        assert product_price == cost_message, "Product price in cost basket message is not presented"
