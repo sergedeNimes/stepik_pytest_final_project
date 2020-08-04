@@ -12,8 +12,8 @@ class LoginPageLocators():
 
 class ProductPageLocators():
     ADD_BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-add-to-basket")
-    BASKET_MESSAGES = (By.CSS_SELECTOR, "#messages")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert-success")
     PRODUCT_NAME = (By.CSS_SELECTOR, ".product_main h1")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
-    PRODUCT_MESSAGE = (By.XPATH, "//*[@id='messages']/div[1]/div/strong")
-    COST_MESSAGE = (By.XPATH, "//*[@id='messages']/div[last()]/div/p/strong")
+    PRODUCT_MESSAGE = (By.XPATH, "//*[@id='messages']/div[1]/div/strong")   # .alert-success strong
+    COST_MESSAGE = (By.XPATH, "//*[@id='messages']/div[last()]/div/p/strong")   # .alert-info strong
