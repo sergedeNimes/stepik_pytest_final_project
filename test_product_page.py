@@ -8,12 +8,10 @@ catalog = "http://selenium1py.pythonanywhere.com/catalogue"
 book1 = "/coders-at-work_207"
 book2 = "/the-city-and-the-stars_95"
 
-@pytest.mark.need_review
 class TestUserAddToBasketFromProductPage():
     @pytest.fixture(scope="function", autouse=True)
     def setup(self, browser):
         user = str(time.time()) + "@fakemail.org", "preved_ʕ•ᴥ•ʔ_medved"
-        # user = str(time.time()) + "@fakemail.org", "passworD:))"
         page = ProductPage(browser, catalog)
         page.open()
         page.go_to_login_page()
@@ -28,6 +26,7 @@ class TestUserAddToBasketFromProductPage():
         page.open()
         page.should_not_be_success_message()
 
+    @pytest.mark.need_review
     def test_user_can_add_product_to_basket(self, browser):
         link = f"{catalog}{book1}"
         page = ProductPage(browser, link)
@@ -36,7 +35,7 @@ class TestUserAddToBasketFromProductPage():
         page.should_be_product_in_basket()
 
 
-@pytest.mark.skip
+@pytest.mark.need_review
 @pytest.mark.parametrize('offer', [0, 1, 2, 3, 4, 5, 6, 
                                    pytest.param(7, marks=pytest.mark.xfail(
                                                    reason="BUG: product name in success message not correct")),
@@ -51,7 +50,7 @@ def test_guest_can_add_product_to_basket(browser, offer):
     page.should_be_product_in_basket()
 
 
-@pytest.mark.skip
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
     link = f"{catalog}{book2}"
     page = ProductPage(browser, link)
@@ -61,6 +60,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     login_page.should_be_login_page()
 
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = f"{catalog}{book2}"
     page = ProductPage(browser, link)
